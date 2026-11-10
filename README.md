@@ -5,7 +5,7 @@ AccioJob Spin Build Pitch · Data Analytics · Project DA-13
 **Stakeholder:** an AC brand planning inventory, or a power company planning supply.
 **Decision:** how much stock or supply to plan for at each heat level (40 °C, 43 °C, 46 °C).
 
-## Key findings (from the dashboard)
+## Key findings
 
 | Metric | Value |
 |---|---|
@@ -14,7 +14,7 @@ AccioJob Spin Build Pitch · Data Analytics · Project DA-13
 | Jul–Sep demand vs. other months | 1,203 MW higher |
 | Model fit | R² = 0.57 |
 
-**Planning table** (daily peak demand, MW)
+## Planning table (daily peak demand, MW)
 
 | Temp | Confidence | Expected | Typical-day low | Typical-day high |
 |---|---|---|---|---|
@@ -22,43 +22,25 @@ AccioJob Spin Build Pitch · Data Analytics · Project DA-13
 | 43 °C | Medium | 6,437 | 5,282 | 7,593 |
 | 46 °C | Low (no days at 46 °C in data) | 6,950 | 5,794 | 8,107 |
 
-**Recommendation:** plan for the upper end of each range (about 7,100 / 7,600 / 8,100 MW at 40 / 43 / 46 °C, 2023 level), add a reserve for growth since, and prepare for a June–July peak.
+## Recommendation
 
-Full memo: [`memo/insight_memo.md`](memo/insight_memo.md)
-
-## Repo structure
-
-```
-data/         raw data notes (large files not committed) + processed output
-src/          analysis.py - data pull, cleaning, model
-docs/         data_sources.md, cleaning_steps.md
-memo/         one-page insight memo
-dashboard/    dashboard PDF export (+ link)
-notebook/     Delhi_Summer_Power_Demand_Analysis.ipynb
-```
-
-## Dashboard
-- PDF: `dashboard/dashboard.pdf`
-- Live link: TODO (paste Looker Studio link)
-
-## Video
-TODO (paste Loom / YouTube link)
-
-## How to reproduce
-```
-pip install -r requirements.txt
-python src/analysis.py
-```
-See `docs/data_sources.md` for where to get the raw files and `docs/cleaning_steps.md` for each cleaning step.
+Plan for the upper end of each range, not the middle: about 7,100 MW at 40 °C, 7,600 MW at 43 °C and 8,100 MW at 46 °C (2023 level), plus a reserve for growth since. Prepare for the peak in June to July.
 
 ## Limits
+
 - Data ends April 2024.
 - No humidity data.
 - Temperature is from a weather-model grid (Open-Meteo), not the IMD station.
 - R² = 0.57, so about 43% of variation is unexplained.
 - 2020 lockdown period removed.
-- 46 °C is a trend extension: no days at 46 °C in the data.
+- 46 °C is a trend extension: there are no days at 46 °C in the data.
+
+## Files
+
+- Dashboard: `When_will_Delhi's_power_demand_peak_.pdf`
+- Analysis notebook: `Delhi_Summer_Power_Demand_Analysis.ipynb`
 
 ## Sources
-- Grid-India daily demand, via Hunt & Bloomfield: Zenodo, DOI 10.5281/zenodo.14983361
+
+- Grid-India daily demand, via Hunt & Bloomfield: Zenodo, DOI 10.5281/zenodo.14983361 (https://doi.org/10.5281/zenodo.14983361)
 - Open-Meteo historical weather API: https://open-meteo.com
